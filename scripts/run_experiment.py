@@ -10,7 +10,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from chromatic.color_analysis import extract_palette, rgb_to_hex  # noqa: E402
+from chromatic.color_analysis import extract_palette, rgb_to_hex
 
 
 def main() -> None:

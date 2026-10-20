@@ -1,8 +1,8 @@
-import hashlib
 import base64
+import hashlib
 import json
-from io import BytesIO
 import sys
+from io import BytesIO
 from pathlib import Path
 
 import numpy as np
@@ -11,7 +11,7 @@ import streamlit as st
 # Supports both `streamlit run app/streamlit_app.py` and editable installs.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from chromatic.color_analysis import extract_palette, rgb_to_hex, valid_centers
+from chromatic.color_analysis import extract_palette, rgb_to_hex, valid_centers  # noqa: I001
 
 
 DEFAULT_SAMPLE = Path(__file__).resolve().parents[1] / "data" / "raw" / "sample-colorful.png"
@@ -149,7 +149,7 @@ try:
         source_bytes, analysis_n_colors, analysis_sample_size, analysis_online,
         tuple(map(tuple, previous_centers)) if previous_centers is not None else None, should_learn
     )
-except Exception as error:
+except (OSError, RuntimeError, ValueError) as error:
     st.error(f"Could not process this image: {error}")
     st.stop()
 
