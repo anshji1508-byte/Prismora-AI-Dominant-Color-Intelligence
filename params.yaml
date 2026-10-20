@@ -1,0 +1,13 @@
+model:
+  n_colors: 4
+  sample_size: 20000
+  online_learning: false
+  random_state: 42
+
+data:
+  input_image: data/raw/sample-colorful.png
+
+outputs:
+  metrics: reports/metrics.json
+  palette: models/palette.json
+  segmentation: reports/segmented.png

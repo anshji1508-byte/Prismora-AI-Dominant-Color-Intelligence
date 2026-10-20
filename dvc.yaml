@@ -1,0 +1,18 @@
+stages:
+  analyze:
+    cmd: python scripts/run_experiment.py
+    deps:
+      - scripts/run_experiment.py
+      - src/chromatic/color_analysis.py
+      - data/raw/sample-colorful.png
+    params:
+      - model.n_colors
+      - model.sample_size
+      - model.online_learning
+      - model.random_state
+      - data.input_image
+    outs:
+      - models/palette.json
+      - reports/segmented.png
+    metrics:
+      - reports/metrics.json
