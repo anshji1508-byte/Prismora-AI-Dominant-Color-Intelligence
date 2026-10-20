@@ -1,0 +1,22 @@
+<svg width="720" height="180" viewBox="0 0 720 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="prism" x1="18" y1="12" x2="150" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C4B5FD"/>
+      <stop offset="0.48" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="word" x1="200" y1="30" x2="520" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#B9B2FF"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10 10)">
+    <path d="M78 2L148 42V122L78 162L8 122V42L78 2Z" fill="url(#prism)" fill-opacity="0.16" stroke="url(#prism)" stroke-width="5"/>
+    <path d="M78 20L130 50V110L78 140L26 110V50L78 20Z" stroke="url(#prism)" stroke-width="3" stroke-opacity="0.7"/>
+    <path d="M78 20V140M26 50L130 110M130 50L26 110" stroke="url(#prism)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M78 20L130 50L78 80L26 50L78 20Z" fill="#C4B5FD" fill-opacity="0.5"/>
+    <path d="M78 80L130 50V110L78 140V80Z" fill="#22D3EE" fill-opacity="0.26"/>
+  </g>
+  <text x="184" y="112" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-3" fill="url(#word)">Prismora</text>
+  <text x="596" y="109" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="4" fill="#A78BFA">AI</text>
+</svg>

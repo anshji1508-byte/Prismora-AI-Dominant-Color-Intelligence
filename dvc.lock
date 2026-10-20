@@ -1,0 +1,37 @@
+schema: '2.0'
+stages:
+  analyze:
+    cmd: python scripts/run_experiment.py
+    deps:
+    - path: data/raw/sample-colorful.png
+      hash: md5
+      md5: 2c09ab93ebb0a28d363a2102f4f37bf3
+      size: 9461
+    - path: scripts/run_experiment.py
+      hash: md5
+      md5: a7609f2b1755e52b365efbc3ce69966e
+      size: 2176
+    - path: src/chromatic/color_analysis.py
+      hash: md5
+      md5: 5023ceb263a69d256b7b31d7f636fc40
+      size: 2641
+    params:
+      params.yaml:
+        data.input_image: data/raw/sample-colorful.png
+        model.n_colors: 4
+        model.online_learning: false
+        model.random_state: 42
+        model.sample_size: 20000
+    outs:
+    - path: models/palette.json
+      hash: md5
+      md5: de5ba6a5b81b85142d885532af4bb6ad
+      size: 722
+    - path: reports/metrics.json
+      hash: md5
+      md5: e1da6d9945cb100d2b83d7fd8783810d
+      size: 239
+    - path: reports/segmented.png
+      hash: md5
+      md5: e276c74a24c274df5467cbd1334851c7
+      size: 9377

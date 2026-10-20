@@ -10,6 +10,11 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY src ./src
 COPY app ./app
+COPY assets ./assets
+COPY data ./data
+COPY models ./models
+COPY reports ./reports
+COPY params.yaml dvc.yaml dvc.lock ./
 
 EXPOSE 8501
 CMD ["streamlit", "run", "app/streamlit_app.py", "--server.address=0.0.0.0", "--server.port=8501"]
