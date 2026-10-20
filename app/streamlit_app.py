@@ -101,7 +101,7 @@ with st.sidebar:
     st.divider()
     st.markdown("### Analysis settings")
     n_colors = st.slider("Dominant colors", 2, 8, 4)
-    sample_size = st.slider("Pixels used for analysis", 5_000, 50_000, 20_000, step=5_000)
+    sample_size = st.slider("Pixels used for analysis", 5_000, 100_000, 50_000, step=5_000)
     online_learning = st.toggle("Online learning mode", value=True)
     analyze_clicked = st.button("🔍 Analyze image", type="primary", use_container_width=True)
     st.caption("Upload an image, choose settings, then click Analyze image.")

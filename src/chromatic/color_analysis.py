@@ -45,19 +45,41 @@ def extract_palette(
             n_clusters=n_colors,
             init=np.asarray(previous_centers, dtype=float),
             n_init=1,
-            batch_size=1024,
+            batch_size=2048,
+            max_iter=200,
             random_state=42,
         )
     elif online:
         model = MiniBatchKMeans(
             n_clusters=n_colors, init="k-means++", n_init=3,
-            batch_size=1024, random_state=42,
+            batch_size=2048, max_iter=200, random_state=42,
         )
     else:
-        model = KMeans(n_clusters=n_colors, init="k-means++", n_init=10, random_state=42)
+        # More restarts and iterations reduce local-minimum error for difficult images.
+        model = KMeans(
+            n_clusters=n_colors,
+            init="k-means++",
+            n_init=20,
+            max_iter=300,
+            tol=1e-4,
+            algorithm="lloyd",
+            random_state=42,
+        )
 
     if online and learn:
         model.partial_fit(pixels_for_fit)
+        # Keep online memory, then refine the current image's centers with precise K-Means.
+        refinement = KMeans(
+            n_clusters=n_colors,
+            init=model.cluster_centers_,
+            n_init=1,
+            max_iter=100,
+            tol=1e-4,
+            algorithm="lloyd",
+            random_state=42,
+        )
+        refinement.fit(pixels_for_fit)
+        model = refinement
     elif not online:
         model.fit(pixels_for_fit)
 
@@ -71,7 +93,8 @@ def extract_palette(
 
     counts = np.bincount(labels, minlength=n_colors)
     order = np.argsort(counts)[::-1]
+    # Build the segmented image before reordering centers for display/palette rank.
+    segmented = learned_centers[labels].reshape(np.asarray(preview).shape)
     centers = learned_centers[order]
     percentages = counts[order] / len(labels) * 100
-    segmented = centers[labels].reshape(np.asarray(preview).shape)
     return preview, Image.fromarray(segmented, "RGB"), centers, percentages, original_size, learned_centers

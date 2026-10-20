@@ -1,6 +1,6 @@
 model:
   n_colors: 4
-  sample_size: 20000
+  sample_size: 50000
   online_learning: false
   random_state: 42
 

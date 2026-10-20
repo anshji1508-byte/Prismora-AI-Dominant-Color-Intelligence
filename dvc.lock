@@ -13,25 +13,25 @@ stages:
       size: 2176
     - path: src/chromatic/color_analysis.py
       hash: md5
-      md5: 5023ceb263a69d256b7b31d7f636fc40
-      size: 2641
+      md5: bf81b9ab85bc9974466836713a38fd9d
+      size: 3400
     params:
       params.yaml:
         data.input_image: data/raw/sample-colorful.png
         model.n_colors: 4
         model.online_learning: false
         model.random_state: 42
-        model.sample_size: 20000
+        model.sample_size: 50000
     outs:
     - path: models/palette.json
       hash: md5
-      md5: de5ba6a5b81b85142d885532af4bb6ad
+      md5: 763798a61ed3f4b98ebc81ccbbf8a1f7
       size: 722
     - path: reports/metrics.json
       hash: md5
-      md5: e1da6d9945cb100d2b83d7fd8783810d
-      size: 239
+      md5: 2691125a4c2c4faf0d3bd6a8fb51ffb7
+      size: 240
     - path: reports/segmented.png
       hash: md5
-      md5: e276c74a24c274df5467cbd1334851c7
-      size: 9377
+      md5: 2014f3a6a5629771ff1e2cbac045b641
+      size: 9401
